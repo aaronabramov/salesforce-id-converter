@@ -1,29 +1,32 @@
 #include <iostream>
 #include <sstream>
 #include <bitset>
-#include <algorithm>
 
-#define BASE "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456"
+#define BASE "ABCDEFGHIJKLMNOPQRSTUVWXYZ012345"
 
 using namespace std;
 
 int main (int argc, char *argv[]) {
   string id = argv[1];
   string chars;
-  string checksum = "";
-  string binary = "";
+  string checksum;
+  string binary;
+  stringstream ss;
+
+  if (id.length() != 15 && id.length() != 18) {
+    cout << "Id sholud be either 15 or 18 char long" << endl;
+    return 1;
+  }
 
   for (int i = 0; i < 3; ++i) {
     chars = id.substr(i * 5, 5);
-    binary.empty();
-    stringstream ss;
 
-    for (char & c : chars) {
-      ss << isupper(c);
+    for (int n = 5; n > 0; n--) {
+      ss << isupper(chars[n - 1]);
     }
 
     binary = ss.str();
-    reverse(binary.begin(), binary.end());
+    ss.str("");
     bitset<5> x(binary);
 
     checksum += BASE[x.to_ulong()];
