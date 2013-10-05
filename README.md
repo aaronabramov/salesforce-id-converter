@@ -1,4 +1,4 @@
-##### Convert 15char Salesforce Id to 18char
+##### Convert 15 chararter Salesforce Ids to 18 character Id in C++ based on binary representation of lower/upper case symbols
 
 ```shel
 c++ sfid.cpp -o sfid
