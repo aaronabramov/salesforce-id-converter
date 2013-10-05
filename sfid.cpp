@@ -11,10 +11,11 @@ int main (int argc, char *argv[]) {
   string id = argv[1];
   string chars;
   string checksum = "";
+  string binary = "";
 
   for (int i = 0; i < 3; ++i) {
     chars = id.substr(i * 5, 5);
-    string binary = "";
+    binary.empty();
     stringstream ss;
 
     for (char & c : chars) {
